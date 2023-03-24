@@ -1,0 +1,804 @@
+\documentclass[10pt]{report}
+\usepackage{blindtext}
+\usepackage{times}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{sectsty}
+\usepackage{float}
+\usepackage{array}
+\usepackage[backend=biber,bibencoding=latin1]{biblatex}
+\chapterfont{\centering}
+\usepackage{enumitem}
+\usepackage{enumerate}
+\usepackage{listings}
+\usepackage{color}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{afterpage}
+\documentclass{article}
+\usepackage{multirow}
+
+\usepackage{ragged2e}
+\usepackage[headheight=0pt,headsep=0pt]{geometry}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\makeatletter
+\def\@makechapterhead#1{%
+  %%%%\vspace*{50\p@}% %%% removed!
+  {\parindent \z@ \centering\normalfont
+    \ifnum \c@secnumdepth >\m@ne
+        \huge\bfseries \@chapapp\space \thechapter
+        \par\nobreak
+        \vskip 20\p@
+    \fi
+    \interlinepenalty\@M
+    \Huge \bfseries #1\par\nobreak
+    \vskip 40\p@
+  }}
+\def\@makeschapterhead#1{%
+  %%%%%\vspace*{50\p@}% %%% removed!
+  {\parindent \z@ \centering
+    \normalfont
+    \interlinepenalty\@M
+    \Huge \bfseries  #1\par\nobreak
+    \vskip 40\p@
+  }}
+\makeatother
+
+\lstset{ %
+ language=Java, % the language of the code
+ basicstyle=\footnotesize, % the size of the fonts that are used for the code
+ numbers=left, % where to put the line-numbers
+ numberstyle=\tiny\color{gray}, % the style that is used for the line-numbers
+ stepnumber=1, % each line is numbered
+ numbersep=5pt, % how far the line-numbers are from the code
+ backgroundcolor=\color{white}, % choose the background color. You must add \usepackage{color}
+ showspaces=false, % show spaces adding particular underscores
+ showstringspaces=false, % underline spaces within strings
+ showtabs=false, % show tabs within strings adding particular underscores
+ frame=single, % adds a frame around the code
+ rulecolor=\color{black}, % if not set, the frame-color may be changed on line-breaks within notblack text (e.g. commens (green here))
+ tabsize=2, % sets default tabsize to 2 spaces
+ captionpos=b, % sets the caption-position to bottom
+ breaklines=true, % sets automatic line breaking
+ breakatwhitespace=false, % sets if automatic breaks should only happen at whitespace
+ title=\lstname, % show the filename of files included with \lstinputlisting;
+ % also try caption instead of title
+ keywordstyle=\color{blue}, % keyword style
+ commentstyle=\color{dkgreen}, % comment style
+ stringstyle=\color{mauve}, % string literal style
+ escapeinside={\%*}{*)}, % if you want to add a comment within your code
+ morekeywords={*,...} % if you want to add more keywords to the set
+}
+\geometry{a4paper,total={180mm,250mm},left=20mm,top=20mm, right=20mm}
+
+\thispagestyle{empty}
+\begin{document}
+\newpage
+\begin{center}
+\thispagestyle{empty}
+\LARGE{\textsc {\textbf{\textcolor{White}{DARK WEB MONITORING FOR CYBER SECURITY INFORMATION}}}}\\[0.2cm]
+\vspace{0.2cm}
+\Large{\textit{\textcolor{White}{\\Major project report submitted \\in partial fulfillment of the
+requirement
+for award of the degree of}}}\\[0.3cm]
+\Large{\textbf{\textcolor{White}{\\Bachelor of Technology\\in \\Computer Science \& Engineering}}}
+\vspace{0.5cm}
+\Large{\textbf{\textcolor{White}{\\By}}}\\[0.5cm]
+\begin{table}[h]
+\centering
+\Large{\textcolor{White}{
+\begin{tabular}{>{\bfseries}lc>{\bfseries}r}
+ABHISHEK KUMAR&(119UECS0013) & (16139)\\SUSHIL KUMAR & (119UECS0948)&(11942)\\NIRAJ KUMAR&(19UECS0948) & (11813)\\
+\end{tabular}}}
+\end{table}
+\vspace{0.5cm}
+\large{\textit{\textcolor{White}{Under the guidance of}}}\\
+\large{\textit{\textcolor{White}{MS. M DIVYA,Degree.,\\
+ASSISTANT PROFESSOR}
+}}\\
+\vspace{0.5cm}
+\includegraphics[scale=0.5]{logo.png}\\
+\vspace{1cm}
+\large{\textbf{\textcolor{White}{DEPARTMENT OF COMPUTER SCIENCE \& ENGINEERING}}}\\
+
+\large{\textbf{\textcolor{White}{SCHOOL OF COMPUTING}}}\\
+\vspace{0.5cm}
+\Large{\textbf{\textcolor{White}{VEL TECH RANGARAJAN DR. SAGUNTHALA R\&D INSTITUTE OF
+SCIENCE \& TECHNOLOGY\\
+\vspace{0.2cm}
+(Deemed to be University Estd u/s 3 of UGC Act,
+1956)}}}\\\Large{\textbf{\textcolor{White}{Accredited by NAAC with A++ Grade}}}\\
+\large{\textbf{\textcolor{White}{CHENNAI 600 062, TAMILNADU, INDIA}}}
+\vspace{0.4cm}
+\large{\textbf{\textcolor{White}{\\April, 2023}}}\\
+\pagecolor{Periwinkle}\afterpage{\nopagecolor}
+\end{center}
+\newpage
+\begin{center}
+\thispagestyle{empty}
+\LARGE{\textsc {\textbf{\textcolor{blue}{PROJECT TITLE}}}}\\[0.2cm]
+\vspace{0.2cm}
+\Large{\textit{\textcolor{blue}{\\Major project report submitted \\in partial fulfillment of the
+requirement
+for award of the degree of}}}\\[0.3cm]
+\Large{\textbf{\textcolor{blue}{\\Bachelor of Technology\\in \\Computer Science \& Engineering}}}
+\vspace{0.5cm}
+\Large{\textbf{\textcolor{blue}{\\By}}}\\[0.5cm]
+\begin{table}[h]
+\centering
+\Large{\textcolor{blue}{
+\begin{tabular}{>{\bfseries}lc>{\bfseries}r}
+STUDENT NAME 1&(REGISTER NO) & (VTU NO)\\STUDENT NAME 2 & (REGISTER NO)&(VTU NO)\\STUDENT NAME 3&(REGISTER NO) & (VTU NO)\\
+\end{tabular}}}
+\end{table}
+\vspace{0.5cm}
+\large{\textit{\textcolor{blue}{Under the guidance of}}}\\
+\large{\textit{\textcolor{blue}{SUPERVISOR NAME,Degree.,\\
+ASSISTANT PROFESSOR}
+}}\\
+\vspace{0.5cm}
+\includegraphics[scale=0.5]{Vel tech-Logo.png}\\
+\vspace{1cm}
+\large{\textbf{\textcolor{blue}{DEPARTMENT OF COMPUTER SCIENCE \& ENGINEERING}}}\\
+
+\large{\textbf{\textcolor{blue}{SCHOOL OF COMPUTING}}}\\
+\vspace{0.5cm}
+\Large{\textbf{\textcolor{blue}{VEL TECH RANGARAJAN DR. SAGUNTHALA R\&D INSTITUTE OF
+SCIENCE \& TECHNOLOGY\\
+\vspace{0.2cm}
+(Deemed to be University Estd u/s 3 of UGC Act,
+1956)}}}\\\Large{\textbf{\textcolor{blue}{Accredited by NAAC with A++ Grade}}}\\
+\large{\textbf{\textcolor{blue}{CHENNAI 600 062, TAMILNADU, INDIA}}}
+\vspace{0.4cm}
+\large{\textbf{\textcolor{blue}{\\April, 2023}}}\\
+\end{center}
+%CERTIFICATE
+\newpage
+\pagenumbering{roman}
+\begin{center}
+{\Huge \textbf{CERTIFICATE}}\\[1cm]
+\end{center}
+\linespread{1.5}
+\large{It is certified that the work contained in the project report titled "PROJECT-TITLE (IN CAPITAL
+LETTER)" by "STUDENT NAME1 & (REGISTER NO), STUDENT NAME2 & (REGISTER NO), STUDENT NAME3 & (REGISTER NO)" has been carried out under my supervision and that this work has not
+been submitted elsewhere for a degree.}
+\vspace{1.5cm}
+\begin{flushright}
+\textbf{Signature of Supervisor\\Supervisor name\\Designation\\Computer Science \&
+Engineering\\School of Computing\\Vel Tech Rangarajan Dr.Sagunthala R\&D\\Institute of Science \&
+Technology\\April, 2023}\\[2.0cm]
+
+
+\end{flushright}
+\begin{flushleft}
+\textbf{Signature of Head of the Department\hfill\textbf{Signature of the Dean }\\\\Computer
+Science \& Engineering\hfill\textbf{Dr. V. Srinivasa Rao}\\School of Computing\hfill\textbf{Professor \& Dean}\\Vel Tech Rangarajan Dr. Sagunthala R\&D\hfill\textbf{Computer
+Science \& Engineering}\\Institute of
+Science \& Technology\hfill\textbf{School of Computing}\\April, 2023\hfill\textbf{Vel Tech Rangarajan Dr. Sagunthala R\&D}\\\hfill\textbf{Institute of
+Science \& Technology}\\}\hfill\textbf{April, 2023}\\
+\end{flushleft}
+%declaration
+\newpage
+\begin{center}
+\Huge \textbf{DECLARATION}
+\end{center}
+\vspace{1.0cm}
+\linespread{1.5}
+\large{
+We declare that this written submission represents my ideas in our own words and where others' ideas
+or words have been included, we have adequately cited and referenced the original sources. We also
+declare that we have adhered to all principles of academic honesty and integrity and have not
+misrepresented or fabricated or falsified any idea/data/fact/source in our submission. We understand
+that any violation of the above will be cause for disciplinary action by the Institute and can also evoke
+penal action from the sources which have thus not been properly cited or from whom proper permission
+has not been taken when needed.}
+\vspace{2.0cm}
+\begin{flushright}
+(Signature)\\
+\large{(STUDENT NAME1(IN CAPITAL LETTER)}\\
+\large{Date:\hspace*{1.0cm}/\hspace*{1.0cm}/}\\[2.0cm]
+(Signature)\\
+\large{(STUDENT NAME2(IN CAPITAL LETTER)}\\
+\large{Date:\hspace*{1.0cm}/\hspace*{1.0cm}/}\\[2.0cm]
+(Signature)\\
+\large{(STUDENT NAME3(IN CAPITAL LETTER)}\\
+\large{Date:\hspace*{1.0cm}/\hspace*{1.0cm}/}\\[2.0cm]
+\end{flushright}
+\newpage
+%approval sheet
+\newpage
+\begin{center}
+\Huge\textbf{APPROVAL SHEET}\\
+\vspace{1.0cm}
+\end{center}
+\linespread{1.5}
+\justifying{
+\large{This project report entitled (PROJECT TITLE (IN CAPITAL LETTERS)) by (STUDENT NAME1
+(REGISTER NO), (STUDENT NAME2 (REGISTER NO), (STUDENT NAME3 (REGISTER NO) is approved for the
+degree of B.Tech in Computer Science \& Engineering.}\\}
+\vspace{4.0cm}
+\begin{flushleft}
+\Large \textbf{Examiners} \hfill \Large \textbf{Supervisor}\\
+\end{flushleft}
+\begin{flushright}
+Supervisor name, Degree.,
+\end{flushright}
+\vspace{1.0cm}
+\begin{flushleft}
+\large{\textbf{Date:\hspace*{1.0cm}/\hspace*{2.0cm}/}}\\
+\large{\textbf{Place:}}
+\end{flushleft}
+%acknowledgment
+\newpage
+\begin{center}
+\LARGE{\textbf{ACKNOWLEDGEMENT}}\\[1cm]
+\end{center}
+\linespread{1.13}
+\large{\paragraph{}We express our deepest gratitude to our respected \textbf{Founder Chancellor and
+President Col. Prof. Dr. R. RANGARAJAN B.E. (EEE), B.E. (MECH), M.S (AUTO),D.Sc., Foundress President
+Dr. R. SAGUNTHALA RANGARAJAN M.B.B.S.} Chairperson Managing Trustee and Vice President.}
+\large{\paragraph{}We are very much grateful to our beloved \textbf{Vice Chancellor Prof. S.
+SALIVAHANAN,} for providing us with an environment to complete our project successfully.}
+\large{\paragraph{}We record indebtedness to our \textbf{Professor \& Dean, Department of Computer
+Science \& Engineering, School of Computing, Dr. V. SRINIVASA RAO, M.Tech., Ph.D.,} for immense care and encouragement
+towards us throughout the course of this project.}
+
+\large{\paragraph{}We are thankful to our \textbf{Head, Department of Computer
+Science \& Engineering,Dr.M.S. MURALI DHAR, M.E., Ph.D.,} for providing immense support in all our endeavors.}
+\large{\paragraph{}We also take this opportunity to express a deep sense of gratitude to our Internal
+Supervisor \textbf{Supervisor name,degree.,(in capital letters)} for his/her cordial support, valuable
+information and guidance, he/she helped us in completing this project through various stages. }
+\large{\paragraph{}A special thanks to our \textbf{Project Coordinators Mr. V. ASHOK KUMAR, M.Tech., Ms. C. SHYAMALA KUMARI, M.E.,} for their valuable guidance and support throughout the course of the project.}
+
+\large{\paragraph{}We thank our department faculty, supporting staff and friends for their help and
+guidance to complete this project.}
+\vspace{2.0cm}
+\begin{flushright}
+\begin{tabular}{>{\bfseries}lc>{\bfseries}r}
+STUDENT NAME1 & & (REGISTER NO)\\STUDENT NAME2 & & (REGISTER NO)\\STUDENT NAME3 & &
+(REGISTER NO)\\
+\end{tabular}
+\end{flushright}
+%ABSTRACT
+\newpage
+\begin{center}
+\vspace{2cm}
+\Large{\textbf{ABSTRACT}}\\[0.5cm]
+\end{center}
+\begin{center}
+\addtocontents{toc}{~\hfill\textbf{Page.No}\par}
+\addcontentsline{toc}{chapter}{ABSTRACT}
+\addtocontents{toc}{\protect\thispagestyle{empty}}
+\end{center}
+\vspace{-5em}
+\Large{\paragraph\\
+Artificial Neural Networks are a special type of machine learning algorithms that are modeled after the human brain. That is, just like how the neurons in our nervous system are able to learn from the past data, similarly, the ANN is able to learn from the data and provide responses in the form of predictions or classifications.
+ANNs are nonlinear statistical models which display a complex relationship between the inputs and outputs to discover a new pattern. A variety of tasks such as image recognition, speech recognition, machine translation as well as medical diagnosis makes use of these artificial neural networks.
+An important advantage of ANN is the fact that it learns from the example data sets. Most commonly usage of ANN is that of a random function approximation. With these types of tools, one can have a cost-effective method of arriving at the solutions that define the distribution. ANN is also capable of taking sample data rather than the entire dataset to provide the output result. With ANNs, one can enhance existing data analysis techniques owing to their advanced predictive capabilities.
+
+ }\\
+\vspace{0.5cm}
+\noindent \textbf{Keywords:}
+\textbf{}
+%list of figure
+\newpage
+\renewcommand*\listfigurename{LIST OF FIGURES}
+\addcontentsline{toc}{chapter}{LIST OF FIGURES}
+\listoffigures
+\newpage
+\renewcommand{\listtablename}{LIST OF TABLES}
+\addcontentsline{toc}{chapter}{LIST OF TABLES}
+\listoftables
+%list of abbreviation
+\newpage
+\newlist{abbrv}{itemize}{1}
+\setlist[abbrv,1]{label=,labelwidth=1in,align=parleft,itemsep=0.1\baselineskip,leftmargin=!}
+\chapter*{LIST OF ACRONYMS AND ABBREVIATIONS}
+\chaptermark{LIST OF ACRONYMS AND ABBREVIATIONS}
+\addcontentsline{toc}{chapter}{LIST OF ACRONYMS AND ABBREVIATIONS}
+\begin{abbrv}
+\item[abbr] Abbreviation
+\end{abbrv}
+\newpage
+\renewcommand*\contentsname{TABLE OF CONTENTS}
+%\addtocontents{toc}{\textbf{CONTENT} \hfill \textbf{PAGE NO.}}
+\tableofcontents
+\addtocontents{toc}{\protect\pagestyle{empty}}
+\thispagestyle{empty}
+%introduction
+\chapter{INTRODUCTION}
+\pagenumbering{arabic}
+\section{Introduction}
+\hspace{0.5cm}
+Monitoring the dark web is an essential component of cybersecurity for any firm. Cybercriminals operate and trade information on a huge and anonymous network of websites and forums known as the "dark web," which is frequently used for illegal operations like hacking, identity theft, and the sale of stolen data. Organizations need to pay closer attention to potential security hazards on the dark web as the number of cyber threats keeps rising.
+
+The goal of this project is to suggest a system for dark web monitoring that makes use of cutting-edge technologies like blockchain, machine learning, and natural language processing in order to increase the effectiveness, accuracy, and security of the monitoring process. By automating the process of locating and analysing dark web data, the suggested technology would help enterprises identify possible risks more rapidly and respond more successfully. In order to provide real-time alerts and notifications of potential threats, the system would also interact with other security tools and systems already in use, such as firewalls, endpoint protection systems, and SIEM solutions.
+
+The suggested system for dark web monitoring could assist organisations in keeping ahead of the changing threat landscape of the digital age and better defending themselves against cyberattacks and other security threats by utilising cutting-edge technologies and integrating with current security systems. The suggested system and its main components will be thoroughly described in the next sections of this project.\\
+\linespread{1.5}
+\section{Aim of the project}
+\hspace{0.5cm}This project's goal is to suggest a dark web monitoring system that makes use of cutting-edge technology to enhance the effectiveness, accuracy, and security of the monitoring procedure. With the help of the suggested system, enterprises would be able to identify and analyse dark web data automatically, recognising possible dangers more quickly and effectively. In order to provide real-time alerts and notifications of potential threats, the system would also be built to interact with other security tools and systems already in use, including firewalls, endpoint protection systems, and SIEM solutions.
+The suggested system intends to improve the precision and security of the monitoring process by utilising natural language processing, machine learning, and blockchain technology. The system would be able to identify new dangers and alert security teams to possible security issues by analysing vast amounts of dark web data in real-time. Additionally, the system would use blockchain technology to produce a tamper-proof record of all data, ensuring the integrity of dark web monitoring data.
+The overall goal of this project is to suggest a system for dark web monitoring that enhances the process' efficiency, accuracy, and security, allowing organisations to keep up with the constantly changing digital age's security threats and defend themselves against cyberattacks and other security threats.
+\section{Project Domain}
+Cybersecurity is the project domain for dark web monitoring. The initiative is more precisely focused on creating a system that can keep an eye out for security concerns like hacker attacks, data breaches, and the selling of stolen data on the dark web. The solution would use cutting-edge tools like blockchain, machine learning, and natural language processing to automate the process of finding and analysing dark web material, allowing enterprises to discover possible risks more rapidly and respond more successfully.
+In order to provide real-time alerts and notifications of potential threats, the system would also interact with other security tools and systems already in use, such as firewalls, endpoint protection systems, and SIEM solutions. The suggested system for dark web monitoring would assist organisations in keeping ahead of the changing threat landscape of the digital age and better defending themselves against cyberattacks and other security threats by utilising cutting-edge technologies and integrating with current security systems.
+Overall, the project's dark web monitoring domain is essential for ensuring companies' cybersecurity and for defending against the rising number of cyberthreats in the modern digital environment.
+
+\section{Scope of the Project}
+The proposed system for monitoring the dark web has a broad scope and several essential elements. The creation of a user-friendly interface for the system is a crucial component that enables security teams to rapidly and simply access and analyse dark web data. In order to provide real-time alerts and notifications of potential threats, the interface would be created to interact with already-installed security tools and systems, including as firewalls, endpoint protection systems, and SIEM solutions.
+The creation of sophisticated algorithms and models for locating and analysing dark web data is another crucial component of the system. The solution would use cutting-edge tools like machine learning and natural language processing to automatically identify and analyse dark web data, allowing enterprises to discover potential dangers more rapidly and respond more successfully.
+In order to provide real-time alerts and notifications of potential threats, the system would also be built to interact with other security tools and systems already in use, including firewalls, endpoint protection systems, and SIEM solutions. The system would also use blockchain technology to produce a tamper-proof record of all data, ensuring the security and integrity of dark web monitoring data.
+The development of a user-friendly interface, cutting-edge algorithms and models for locating and analysing dark web data, and integration with current security systems and tools are just a few of the important components of the proposed system for monitoring the dark web. Overall, the scope of the system is broad and includes many important elements. The proposed system would improve the effectiveness, accuracy, and security of the monitoring process by utilising cutting-edge technologies and integrating with current security systems. As a result, organisations would be better able to defend themselves against cyberattacks and other security threats.
+
+%literature review
+\chapter{LITERATURE REVIEW}
+[1] K. Hashi et al, 
+In the healthcare industry, machine learning methods are routinely employed to forecast deadly
+illnesses. The goal of this study was to create and compare the performance of a standard system and a suggested system that predicts heart disease using the Logistic regression, K-nearest
+neighbour, Support vector machine, Decision tree, and Random Forest classification models.
+The suggested system aided in tuning the hyperparameters of the five specified classification
+algorithms utilising the grid search technique. The main study topic is the performance of the
+heart disease prediction system. It is possible to improve the performance of prediction models
+by using the hyperparameter tuning model.
+
+\linespread{1.5}
+%PROJECT DESCRIPTION
+\chapter{PROJECT DESCRIPTION}
+\linespread{1.5}
+\section{Existing System}
+There are numerous systems in place for monitoring the dark web, and the majority of them rely on manual techniques for locating and examining dark web material. These manual techniques call for human analysts to comb through enormous amounts of data in order to discover potential risks, which can be time-consuming, error-prone, and ineffective. Also, enterprises may find it challenging to stay ahead of developing threats and efficiently address possible security issues due to the existing systems' inability to keep up with the dark web's rapid expansion.
+
+Another drawback of current systems is that they might not successfully interface with other security tools and systems, like firewalls, SIEM solutions, and endpoint protection systems. Because organisations might not get real-time alerts and notifications of new dangers, this might cause delays in discovering and responding to possible attacks. Also, it's possible that current systems don't offer the level of security and integrity needed to effectively defend against cyberattacks and other security threats.
+
+Overall, the dark web monitoring systems currently in use suffer from a number of drawbacks, such as their dependency on manual processes, lack of effectiveness, inability to keep up with the constantly changing threat landscape, and limited interaction with current security systems and tools. These drawbacks make it difficult for enterprises to defend themselves against new attacks and efficiently address possible security problems, emphasising the need for a more sophisticated and effective dark web monitoring system.
+\section{Proposed System}
+The powerful algorithms, models, and user-friendly interface of the suggested system for monitoring the dark web give it significant benefits over current methods. The suggested system has the capacity to automate the process of locating and evaluating dark web material by utilising cutting-edge technologies like natural language processing and machine learning. Its automation lowers the risk of cyberattacks and other security threats by enabling firms to detect possible threats more rapidly and respond more successfully.
+
+The suggested system's capability to successfully interact with current security tools and systems is another benefit. Security teams may respond swiftly and pro-actively to new security concerns because to the system's ability to give real-time alerts and notifications of potential dangers. To further ensure the confidentiality and integrity of the dark web monitoring data, the system makes use of blockchain technology to generate a tamper-proof record of all data.
+
+The suggested solution also provides a user-friendly interface that is simple to use and effortlessly interacts with current security tools and systems. This interface lowers the possibility of mistakes and delays when recognising and responding to possible threats by enabling security personnel to access and analyse dark web data quickly and efficiently. Overall, compared to current systems, the proposed system for dark web monitoring has a number of advantages, including the use of cutting-edge algorithms and models, integration with current security tools and systems, and a user-friendly interface that improves the effectiveness, accuracy, and security of the monitoring process.
+
+\section{Feasibility Study}
+A project's viability and worthiness are determined in large part by the results of a feasibility study. A feasibility study can be used to evaluate the project's technical, financial, and operational viability in the case of the suggested system for dark web surveillance. By looking at the technologies and resources available for the system's development and execution, the project's technical viability will be assessed. This entails determining the necessary hardware and software as well as any conceivable difficulties or constraints relating to technology.
+
+Cost-benefit analysis will be used to assess the proposed system's economic viability by determining whether the system's advantages exceed its disadvantages. This will entail making estimates for the system's development and deployment costs as well as for any potential benefits it might offer, such as increased security, a lower chance of cyberattacks, and quicker reaction times to emerging security risks.
+
+Finally, the system's operational viability will be assessed by looking at how practical and effective it is in relation to the organization's current operational procedures and security architecture. This will entail evaluating the system's compatibility with current security tools and systems as well as the effect it will have on the organization's regular operations. Overall, a thorough feasibility study can ensure that the suggested dark web monitoring system is workable and can offer organizations considerable benefits in terms of security, effectiveness, and risk reduction.
+
+\subsection{Economic Feasibility}
+Any project must be economically feasible, but this is critical for initiatives requiring the creation and application of technology, like the system for dark web surveillance that is being proposed. Cost-benefit analysis will be used to assess the project's economic viability by determining whether the system's advantages exceed its disadvantages.
+
+The price of creating and implementing the system will involve expenditures for things like creating software, buying hardware, paying for implementation and training charges, and paying for continuing maintenance. But, the system will also provide greater security, a lower risk of cyberattacks, and quicker reaction times to new security risks. Due to fewer financial losses and reputational harm from security breaches, these advantages can result in significant cost reductions for enterprises.
+
+In general, companies are anticipated to gain significantly from the suggested method for dark web surveillance. The system can assist firms in saving on the costs associated with security breaches, including legal fees, data recovery costs, and reputational harm by lowering the risk of cyber assaults and enhancing the effectiveness of security operations. The system's ability to interface with already-in-use security tools and systems can also help to lower deployment costs and raise the overall efficacy of security operations in terms of cost. As a result, it is anticipated that the suggested system for dark web monitoring will have high economic viability, making it a viable and worthwhile investment for businesses looking to strengthen their cybersecurity posture.
+
+\subsection{Technical Feasibility}
+The viability of the suggested system for dark web surveillance is heavily influenced by its technical capability. By examining the availability of the necessary hardware, software, and other resources required for the development and deployment of the system, the technical viability of the project will be evaluated. The system must be created such that it can work with the organization's current security measures and IT infrastructure. The technical feasibility assessment will also highlight any potential issues or restrictions that might come up during the system's development and implementation.
+
+The capability to collect and analyze data from the dark web is one of the main technical hurdles in creating a dark web monitoring system. Access to the dark web requires specific software and methods due to the network's secrecy and encryption. As a result, the system needs to be built with data collecting and analysis tools that can access and process information from the dark web.
+
+The proposed system must also be made to be adaptable and scalable in order to adapt to evolving security risks and technological advancements. Additionally, it should be able to seamlessly interact with current security tools and systems. To guarantee that the suggested system is technically feasible and capable of effectively satisfying the organization's needs, a thorough technical feasibility study is essential. Overall, a technological feasibility study that is successful can guarantee that the suggested dark web monitoring system can be implemented with little disturbance to current IT infrastructure while offering a strong and efficient tool for boosting organizational cybersecurity posture.
+
+\subsection{Social Feasibility}
+A crucial component of the suggested system for monitoring the dark web is social feasibility, which entails assessing any potential negative social and ethical effects of the system's deployment. The system's effects on workers, clients, and other stakeholders, as well as on broader societal values and expectations, will be evaluated as part of the social feasibility study.
+
+The suggested system's possible influence on civil rights and personal privacy is one of its most important societal considerations. The system must be created to safeguard users' rights to privacy and to adhere to all applicable data protection laws and regulations. Stakeholders should also be informed about the system's goal and how their data will be used, and the system itself should be transparent.
+
+Potential effects on worker satisfaction and morale are another social factor to take into account. Workers can feel as though their privacy is being breached or that they are under more observation than usual. Thus, it is crucial to offer training and instruction on the goals and advantages of the system and to guarantee that staff members are aware of how it works.
+
+Ultimately, it's crucial to do a social feasibility study to make sure that everyone will find the suggested dark web surveillance system useful and acceptable. The system can be successfully deployed while preserving stakeholder trust and support by identifying potential social and ethical concerns and developing suitable strategies to mitigate them.
+
+\section{System Specification}
+\textbf{Hardware:}
+\begin{itemize}
+    \item Processor: Intel Core i5 or higher
+    \item RAM: 8GB or higher
+    \item Hard Disk Space: 500GB or higher
+    \item Network Interface Card: 10/100/1000 Ethernet or higher
+    \item Monitor: 1080p resolution or higher
+\end{itemize}
+
+\textbf{Software}:
+\begin{itemize}
+    \item Processor: Operating System: Windows 10 or Linux Ubuntu
+    \item Database: MySQL
+    \item Web Server: Apache
+    \item Data Mining and Analysis: Python with Pandas, Scikit-learn, and Tensorflow libraries
+    \item Web Scraping: Beautiful Soup or Scrapy libraries
+    \item Encryption: OpenPGP 
+\end{itemize}
+
+\textbf{Security:}
+\begin{itemize}
+    \item Secure Socket Layer (SSL) certificate for web server encryption
+    \item Two-factor authentication for login
+    \item Regular security updates for the operating system and software
+    \item Firewall and intrusion detection system
+\end{itemize}
+
+\textbf{Other Features:}
+\begin{itemize}
+    \item Secure Socket Layer (SSL) certificate for web server encryption
+    \item Two-factor authentication for login
+    \item Regular security updates for the operating system and software
+    \item Firewall and intrusion detection system
+\end{itemize}
+
+\textbf{Other Features:}
+\begin{itemize}
+    \item User-friendly web-based interface for data visualization and analysis
+    \item Real-time alerts for potential security threats
+    \item Data filtering and search functionality
+    \item Customizable dashboard and reporting
+    \item Integration with existing security systems
+\end{itemize}
+
+These system specifications are subject to change based on specific organizational needs and requirements. However, these specs provide a general idea of the hardware, software, and security features needed to build and implement a functional and effective dark web monitoring system.
+
+
+
+
+
+\subsection{Hardware Specification}
+\begin{itemize}
+    \item Processor: Intel Core i5 or higher
+    \item RAM: 8GB or higher
+    \item Hard Disk Space: 500GB or higher
+    \item Network Interface Card: 10/100/1000 Ethernet or higher
+    \item Monitor: 1080p resolution or higher
+\end{itemize}
+\subsection{Software Specification}
+\begin{itemize}
+    \item Processor: Operating System: Windows 10 or Linux Ubuntu
+    \item Database: MySQL
+    \item Web Server: Apache
+    \item Data Mining and Analysis: Python with Pandas, Scikit-learn, and Tensorflow libraries
+    \item Web Scraping: Beautiful Soup or Scrapy libraries
+    \item Encryption: OpenPGP 
+\end{itemize}
+\subsection{Standards and Policies}
+{Sample attached}\\
+\textbf{Information Security Policy}\\
+This policy describes the organization's information security strategy and offers recommendations for the appropriate usage of data and information systems. The policy should include guidelines for data handling, encryption, and access control.\\
+\textbf{Standard Used: ISO/IEC 27001}\\
+
+\textbf{Data Protection Policy}\\
+With the help of this policy, the organization is guaranteed to abide by all applicable data protection laws and ordinances, such as the GDPR or CCPA. The policy should describe the organization's strategy to managing personal data and should address topics like data acquisition, retention, and destruction.\\
+\textbf{Standard Used: ISO/IEC 27001}\\
+
+\textbf{Code of Conduct:}\\
+The code of conduct sets the ethical and professional standards that employees are expected to adhere to. Guidelines for using the dark web monitoring system, including information on data collection and use, should be included in this policy.\\
+\textbf{Standard Used: ISO/IEC 27001}
+
+\textbf{ISO/IEC 27001:}\\
+This is a globally recognized standard for information security management. This standard can be used by organizations to create and maintain a strong information security management system that is compliant with international best practices.\\
+\textbf{Standard Used: ISO/IEC 27001}
+
+\textbf{NIST Cybersecurity Framework:}\\
+This framework provides standards and best practises for controlling and decreasing cybersecurity risk. Organizations can use this framework to assess their current cybersecurity posture and develop a comprehensive cybersecurity strategy.\\
+\textbf{Standard Used: ISO/IEC 27001}
+
+
+
+\chapter{METHODOLOGY}
+\linespread{1.5}
+\section{General Architecture}
+\begin{figure}[H]
+ \centering
+ \includegraphics[height= 7cm, width=15cm]{images/Capture1.JPG}
+ \caption{\textbf{Fig. Name}}
+\end{figure}
+Description
+\section{Design Phase }
+\subsection{Data Flow Diagram}
+\begin{figure}[H]
+ \centering
+ \includegraphics[height= 10cm, width=15cm]{images/Capture3.JPG}
+ \caption{\textbf{Fig. Name}}
+\end{figure}
+
+Description
+\subsection{Use Case Diagram}
+\begin{figure}[H]
+ \centering
+ \includegraphics[height= 10cm, width=12cm]{images/use case.jpg}
+ \caption{\textbf{Fig. Name}}
+\end{figure}
+Description
+\subsection{Class Diagram}
+\begin{figure}[H]
+ \centering
+ \includegraphics[height= 10cm, width=12cm]{images/class.jpg}
+ \caption{\textbf{Fig. Name}}
+\end{figure}
+Description
+\subsection{Sequence Diagram}
+\begin{figure}[H]
+ \centering
+ \includegraphics[height= 12cm, width=12cm]{images/Untitled Diagram (9).jpg}
+ \caption{\textbf{Fig. Name}}
+\end{figure}
+Description
+\subsection{Collaboration diagram}
+\begin{figure}[H]
+ \centering
+ \includegraphics[height= 12cm, width=12cm]{images/Untitled Diagram (9).jpg}
+ \caption{\textbf{Fig. Name}}
+\end{figure}
+Description
+
+\subsection{Activity Diagram}
+\begin{figure}[H]
+ \centering
+ \includegraphics[height= 12cm, width=12cm]{images/Untitled Diagram (9).jpg}
+ \caption{\textbf{Fig. Name}}
+\end{figure}
+\section{Algorithm \& Pseudo Code}
+\subsection{Algorithm}
+\subsection{Pseudo Code}
+
+%Description of Sequence Diagram
+\section{Module Description}
+\subsection{Module1}
+Describe module with Title
+
+\subsection{Module2}
+Describe module with Title
+
+\subsection{Module3}
+Describe module with Title
+
+\section{Steps to execute/run/implement the project}
+\subsection{Step1}
+Describe steps with title and mention steps in bullet points
+
+\subsection{Step2}
+Describe steps with title and mention steps in bullet points
+
+\subsection{Step3}
+Describe steps with title and mention steps in bullet points
+
+
+
+
+\chapter{IMPLEMENTATION AND TESTING}
+\linespread{1.5}
+\section{Input and Output}
+\subsection{Input Design}
+\subsection{Output Design}
+\section{Testing}
+\section{Types of Testing}
+\subsection{Unit testing}
+\subsubsection{Input}
+\begin{lstlisting}
+\end{lstlisting}
+\subsubsection{Test result}
+\subsection{Integration testing}
+\subsubsection{Input}
+\begin{lstlisting}
+\end{lstlisting}
+\subsubsection{Test result}
+\subsection{System testing}
+\subsubsection{Input}
+\begin{lstlisting}
+\end{lstlisting}
+\subsubsection{Test Result}
+\newpage
+\subsection{Test Result}
+\begin{figure}[H]
+ \centering
+ \includegraphics[height= 18cm, width=17cm]{images/s4.png}
+ \caption{\textbf{Test Image}}
+\end{figure}
+\chapter{RESULTS AND DISCUSSIONS}
+\linespread{1.5}
+\section{Efficiency of the Proposed System}
+{Sample attached}\\
+The proposed dark web monitoring system may have a number of efficiency advantages. The system's capacity to automate the process of finding and analysing dark web material would be one of its main advantages. As a result, there would be a lower risk of data breaches and other cyberattacks since firms would be able to identify possible threats more immediately and respond more effectively. The technology could scan massive amounts of dark web data in real-time by utilising natural language processing and machine learning algorithms, allowing businesses to stay ahead of developing threats and react more swiftly to potential security problems.
+The ability of the suggested solution to interface with current security tools and systems would be another benefit. The system may deliver real-time alerts and notifications of potential risks by seamlessly connecting with SIEM solutions, endpoint protection systems, and firewalls, allowing enterprises to act right away to reduce the risk of a cyber attack. This would enable security teams to concentrate on more important security activities, like incident response and threat hunting, by lightening their workload.
+Overall, the suggested approach for monitoring the dark web would be significantly more efficient than current ones. The solution could help enterprises keep ahead of the changing danger environment of the digital age and better defend themselves against cyberattacks and other security risks by automating the process of finding and analysing dark web data and integrating with current security systems and tools.
+
+\section{Comparison of Existing and Proposed System}
+{Sample attached}\\
+
+\textbf{Existing system:(Manually reviewing dark web data)}\\The current dark web monitoring solutions mainly rely on human analysts to examine and manually spot potential dangers. This can be a labor- and time-intensive process, which can cause delays in the identification and mitigation of cyber threats. The suggested system for dark web monitoring, in contrast, would automate the process of finding and analysing dark web data by utilising cutting-edge technology like artificial intelligence and machine learning. As a result, there would be a lower risk of data breaches and other cyberattacks since firms would be able to identify possible threats more immediately and respond more effectively.
+
+Since the suggested system would employ machine learning algorithms to find patterns and anomalies in the dark web data, it would be more accurate than the current solutions. By doing so, the chance of false negatives would be decreased as the algorithm would be able to identify possible risks that human analysts could overlook. Additionally, using blockchain technology to safeguard dark web monitoring data would guarantee the data's integrity and guard against manipulation or unwanted access.
+
+In comparison to the current techniques, the suggested approach for dark web monitoring offers a number of benefits, including increased efficiency, accuracy, and security. Organizations may strengthen their cybersecurity posture and defend themselves from the constantly changing threat landscape of the digital age by utilising cutting-edge technologies like artificial intelligence, machine learning, and blockchain.\\
+\textbf{Proposed system:(Natural language processing (NLP) algorithms)}\\ Using natural language processing (NLP) techniques, dark web forums and marketplaces' material is analysed. Potential hazards including discussions about data breaches, malware campaigns, or cyberattacks could be found using NLP. Anomalies in dark web data, such as spikes in activity or changes in behaviour patterns that would point to a security problem, could be found by the system using machine learning techniques.
+
+The proposed method may leverage blockchain technology to make a tamper-proof record of all dark web data, ensuring the security of the dark web monitoring data. This would give the system the ability to guarantee the data's integrity and defend against illegal access or alteration. The system might also employ cutting-edge encryption techniques to secure the data and stop it from getting into the wrong hands.
+
+The system might be built to connect with current security tools and systems, like firewalls, endpoint protection systems, and SIEM solutions, to increase its efficiency. As a result, businesses would be able to take quick action to reduce the danger of a cyber attack and receive alerts and notifications of potential threats in real-time.
+
+In general, a proposed system for monitoring the dark web would make use of cutting-edge technologies to enhance the efficacy, security, and accuracy of the monitoring procedure. Organizations may keep ahead of the changing threat landscape of the digital age and defend themselves against cyberattacks and other security threats by automating the process of discovering and analysing dark web data.
+
+
+\section{Sample Code}
+\begin{lstlisting}
+write your code here
+main code
+import pandas as pd
+import time
+# from helpers.get_urls import get_urls
+# from helpers.forum_scrape import forum_scrape
+# from helpers.make_json import make_json
+from helpers.scraper import scraper_request
+from esearch import store_record
+from esearch import connect_elasticsearch, create_index
+import logging
+import requests
+import os
+
+# Url to scrape
+URL = "http://nzxj65x32vh2fkhk.onion/"
+
+# Keywords to search
+KEYWORDS = ["all", "DDOS", "exploits", "credit cards", "attack", "bitcoin", "passwords", "information", "market", "explosives", "weapons", "hacked", "password", "wallet", "ransomware", "stolen", "admin", "blockchain", "cryptocurrency",
+            "username", "account", "dollar", "biometric", "money", "forbidden", "leaked", "fullz", "Взломщик", "Залив", "Безнал", "Взлом", "dump data", "security", "payment"]
+
+# KEYWORDS = ["all"]
+
+# Settings for elasticsearch index
+settings = {
+    "settings": {
+        "number_of_shards": 1,
+        "number_of_replicas": 0
+    },
+    "mappings": {
+        "data": {
+            "dynamic": "strict",
+            "properties": {
+                "header": {
+                    "type": "text"
+                },
+                "content": {
+                    "type": "text"
+                },
+                "author": {
+                    "type": "text",
+                },
+                "date": {
+                    "type": "text",
+                },
+            }
+        }
+    }
+}
+
+# Get current time in ms
+
+
+def current_milli_time(): return str(round(time.time() * 1000))
+
+
+def main():
+    url = os.environ.get('NODE_SERVER')
+
+    message = ""
+    while True:
+        config = requests.get(url + '/api/user/_config?id=5fc8d9d5f6779c0312d44dca' if url !=
+                              None else 'http://localhost:8080/api/user/_config?id=5fc8d9d5f6779c0312d44dca').json()
+        try:
+            print("\nSetting up your Proxy to browse the dark web!")
+            requests.post(url + '/api/data/_status' if url !=
+                          None else 'http://localhost:8080/api/data/_status', json={'message': 'Scraping!', 'active': True})
+
+            data = scraper_request(config)
+
+            message = f'On {config["cooldown"]} minutes cooldown!'
+            res = requests.post(url + '/api/data' if url !=
+                                None else 'http://localhost:8080/api/data', json=data)
+            print(f'Data sent to server and, {res}')
+        except:
+            message = 'An error occurd!'
+
+        requests.post(url + '/api/data/_status' if url !=
+                      None else 'http://localhost:8080/api/data/_status', json={'message': message, 'active': False})
+        print(f"Waiting minutes before next interval")
+        time.sleep(int(config["cooldown"]) * 60)
+
+
+if __name__ == "__main__":
+    main()
+
+\end{lstlisting}
+\subsubsection{Output}
+\begin{figure}[H]
+ \centering
+ \includegraphics[height= 15cm, width=17cm]{images/output1.png}
+ \caption{\textbf{Output 1}}
+\end{figure}
+\begin{figure}[H]
+ \centering
+ \includegraphics[height= 18cm, width=17cm]{images/output3.png}
+ \caption{\textbf{Output 2}}
+\end{figure}
+\chapter{CONCLUSION AND FUTURE ENHANCEMENTS}
+\linespread{1.5}
+\section{Conclusion}
+Monitoring the dark web actively for information that can be utilized to identify and mitigate possible attacks is a crucial component of cybersecurity. The dark web is an unindexed area of the internet that can only be accessed with specialized software and cannot be found using common search engines. Because it is a hub for criminal activity, it is crucial for businesses to keep an eye on the dark web for any information that may have been released about their operations, personnel, or clients.
+
+Organizations can identify possible cyber dangers including data breaches, stolen data, and hacker forums where criminals plot their schemes by keeping an eye on the dark web. Organizations can uncover potential insider threats from employees by using dark web surveillance.
+
+Additionally, dark web monitoring enables businesses to react swiftly to potential threats. Businesses can reduce the harm caused by cyberattacks and stop further breaches by spotting threats early on. Companies can also strengthen their cybersecurity procedures, update their security processes, and put better security measures in place to guard against upcoming attacks using the information obtained through dark web monitoring. In conclusion, active dark web monitoring is a crucial component of contemporary cybersecurity, and businesses should prioritise doing so.
+
+The use of blockchain technology to protect dark web monitoring data is another potential improvement. Dark web monitoring systems' security can be increased by using blockchain technology, which offers a secure and decentralised method of data management and storage. Organizations may make sure that their data is untouchable and cannot be changed by unauthorised parties by utilising blockchain technology. As a result, there can be more assurance in the findings and help to increase the accuracy of dark web monitoring data.
+
+Nevertheless, the future of dark web monitoring appears bright as new techniques and technologies are being created to increase its efficiency. Organizations must keep ahead of the curve and utilise cutting-edge tools and technology to safeguard their assets and remain secure in the digital era as cyber threats continue to emerge.
+\section{Future Enhancements}
+There are a number of potential future advancements in the realm of dark web surveillance that could increase its efficacy. The analysis of dark web data using machine learning and artificial intelligence is one potential improvement. Organizations can more effectively recognise possible dangers and act rapidly in response by utilising machine learning algorithms. By doing so, businesses can keep one step ahead of online criminals and lower their vulnerability to data breaches and other online dangers.
+
+
+\chapter{INDUSTRY DETAILS}
+\section{Industry name - ISAC}
+\subsection{Duration of Internship (07 Feb - To 21 April)}
+\subsection{Duration of Internship in months - 4}
+\subsection{Industry Address - Noida-Greater Noida Expy, Block A, Sector 132 Noida, Uttar Pradesh 201304, India}
+\section{Internship offer letter}
+ \includegraphics[height= 7cm, width=15cm]{images/offer.png}
+\section{Project Commencement Form}
+\section{Internship Completion certificate}
+
+
+\chapter{PLAGIARISM REPORT}
+ATTACH ONLY SUMMARY PAGE OF PLAGIARISM REPORT
+
+\chapter{SOURCE CODE \& POSTER PRESENTATION}
+\section{Source Code}
+
+\section{Poster Presentation}
+Should be in New page after the source code
+
+\addcontentsline{toc}{chapter}{References}
+\renewcommand\bibname{References}
+
+
+\begin{thebibliography}{9}
+\bibitem {latexcompanion} \text{Pamella Soares; Raphael Saraiva; Iago Fernandes; Antônio Neto; Jerffeson Souza(2022).A Blockchain-based Customizable Document Registration Service for Third Parties, IEEE International Conference ,20(15),7456-7462}\\\\ \textbf{FORMAT:Author(s)name (Year).Title, Journal name, Volume,
+Issue, Pageno.}\\
+\end{thebibliography}
+\newpage
+
+\begin{center} \textbf{General Instructions} \end{center} 
+\begin{itemize}
+\item Cover Page should be printed as per the color template and the next page also should be printed in color as per the template
+\item \textbf {Wherever Figures applicable in Report , that page should be printed in color}
+
+\item Dont include general content , write more technical content
+
+
+\item Each chapter should minimum contain 3 pages
+\item Draw the notation of diagrams properly 
+
+\item Every paragraph should be started with one tab space 
+\item Literature review should be properly cited and described with content related to project
+\item All the diagrams should be properly described and dont include general information of any diagram
+\item Example Use case diagram - describe according to your project flow
+\item All diagrams,figures should be numbered according to the chapter number
+\item Test cases should be written with test input and test output
+\item All the references should be cited in the report 
+\item \textbf{Internship Offer letter and neccessary documents should be attached}
+\item \textbf{Strictly dont change font style or font size of the template, and dont customize the latex code of report}
+\item \textbf{Report should be prepared according to the template only}
+\item \textbf{Any deviations from the report template,will be summarily rejected}
+\item \textbf{ Number of Project Soft Binded copy for each and every batch is (n+4) copies as given in the table below}
+\item \textbf {Attach the CD in last Cover page of the Project Report with CD cover and details of batch like Title,Members name and VTU No ,Batch No,Project category (Inhouse/Internship)should be written in Marker pen}
+
+
+
+\item For \textbf{Standards and Policies} refer the below link \\
+https://law.resource.org/pub/in/manifest.in.html
+
+\item Plagiarism should be less than 15\% 
+\item  \textbf {Journal/Conference Publication proofs should be attached in the last page of Project report after the references section}
+\end{itemize}
+
+\newpage
+\begin{center} \textbf{General Instructions} \end{center} 
+\includegraphics[scale=1]{Project Docs.jpg}\\
+\end{document}
